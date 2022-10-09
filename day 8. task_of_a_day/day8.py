@@ -22,6 +22,7 @@ def caesar(start_text, shift_amount, cipher_direction):
 
 
 # TODO-1: Import and print the logo from art.py when the program starts.
+
 from art import logo
 
 print(logo)
@@ -30,6 +31,7 @@ print(logo)
 # e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
 # If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
 # Hint: Try creating a while loop that continues to execute the program if the user types 'yes'.
+
 should_end = False
 while not should_end:
 
