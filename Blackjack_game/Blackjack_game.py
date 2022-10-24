@@ -1,10 +1,5 @@
 ############### Blackjack Project #####################
 
-# Difficulty Normal 😎: Use all Hints below to complete the project.
-# Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
-# Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
-# Difficulty Expert 🤯: Only use Hint 1 to complete the project.
-
 ############### Our Blackjack House Rules #####################
 
 ## The deck is unlimited in size.
@@ -34,17 +29,13 @@
 # Hint 4: Create a deal_card() function that uses the List below to *return* a random card.
 # 11 is the Ace.
 import random
-
 from art import logo
-
 
 def deal_card():
     """Returns a random card from the deck"""
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     card = random.choice(cards)
     return card
-
-
 # Hint 5: Deal the user and computer 2 cards each using deal_card() and append().
 # Hint 6: Create a function called calculate_score() that takes a List of cards as input
 # and returns the score.
@@ -58,10 +49,6 @@ def calculate_score(cards):
         cards.remove(11)
         cards.append(1)
     return sum(cards)
-
-
-# Hint 5: Deal the user and computer 2 cards each using deal_card() an append().
-
 
 # Hint 13: Create a function called compare() and pass in the user_score and computer_score. If the computer and user both have the same score, then it's a draw. If the computer has a blackjack (0), then the user loses. If the user has a blackjack (0), then the user wins. If the user_score is over 21, then the user loses. If the computer_score is over 21, then the computer loses. If none of the above, then the player with the highest score wins.
 def compare(user_score, computer_score):
