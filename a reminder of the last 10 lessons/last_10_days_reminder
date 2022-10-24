@@ -88,11 +88,11 @@ print (f"Your total bill is ${prize} ")
 print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.") 
 
-first_decision = input( "You are at a cross road. Where would you like to go? Choose 'left' or 'right' \n ")
+first_decision = input( "You are at a cross road. Where would you like to go? Choose 'left' or 'right' \n ").lower()
 if first_decision == 'left':
-  second_decision = input ("You come on island in the middle of lake. Type 'wait' to wait for boat or 'swim' to swim alone.\n")
+  second_decision = input ("You come on island in the middle of lake. Type 'wait' to wait for boat or 'swim' to swim alone.\n").lower()
   if second_decision == 'wait':
-    third_decision = input ("The boat takes you to the room with 3 doors. Chose red, yellow or blue.\n")
+    third_decision = input ("The boat takes you to the room with 3 doors. Chose red, yellow or blue.\n").lower()
     if third_decision == "red":
       print("You are in one room with princess, but you will be dead soon. She got's dragons.\n")
     elif third_decision == 'yellow':
