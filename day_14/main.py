@@ -2,6 +2,7 @@ from game_data import data
 import random
 from art import logo, vs
 
+#Need to add clear() after every game. 
 
 
 def get_random_account():
