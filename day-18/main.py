@@ -26,6 +26,18 @@ for shape_side_n in range(3,11):
     draw_shape(shape_side_n)
     tim.color(random.choice(colors))
 
+        ### Random walk ###  
+colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+directions = [0, 90, 180, 270]
+tim.pensize(15)
+tim.speed("fastest")
+
+for _ in range(200):
+    tim.color(random.choice(colours))
+    tim.forward(30)
+    tim.setheading(random.choice(directions))
+ 
+
 #######First Version
 # for _ in range(3):
 #     tim.forward(100)
