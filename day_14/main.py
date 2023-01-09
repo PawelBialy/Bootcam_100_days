@@ -4,7 +4,7 @@ from art import logo, vs
 
 #Need to add clear() after every game. 
 
-
+" "
 def get_random_account():
     """Get data from random account"""
     return random.choice(data)
