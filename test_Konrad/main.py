@@ -4,45 +4,73 @@ import random
 
 
 screen = Screen()
-screen.setup(width=400, height=400)
-screen.listen()
-            #turtle
+screen.tracer(0)
+screen.setup(width=600, height=600)
 turtle = Turtle()
-colors = ["blue", "red", "black","gold","green"]
+level = 1
+
+            #my turtle
+
+turtle.penup()
 turtle.shape("turtle")
 turtle.setheading(90)
-turtle.penup()
-turtle.setposition(0,-160)
+turtle.setposition(0,-275)
 
+colors = ["blue", "red", "black","gold","green"]
 cars = []
-car_speed = 5
+car_move = 5
+
     #Create car ( and set a parameters )
-for i in range(1,6):
-        car = Turtle()
-        car.shape("square")
-        car.color(random.choice(colors))
+def new_car():
+    random_car_number = random.randint(1,6)
+    if random_car_number == 2:
+        car = Turtle("square")
+        car.hideturtle()
+        car.shapesize(stretch_wid=1, stretch_len=2)
         car.penup()
-        # car.setposition(x=160, y=-100 + 25 * i)
-        y_position = random.randint(-150, 150)
-        car.goto(x=160, y=y_position)
+        car.color(random.choice(colors))
+        car.setposition(x=160, y=-100 + 20)
+        y_position = random.randint(-245, 245)
+        car.goto(x=280, y=y_position)
+        car.showturtle()
         cars.append(car)
-
-
 
 
 #set turtle to go up, and go back when it will be at the end
 def go_up():
+    global level
     turtle.forward(25)
     #print(turtle.position()[1])
-    if turtle.position()[1] > 200 :
-        turtle.setposition(0, -160)
+    if turtle.position()[1] > 300 :
+        level += 1
+        global car_move
+        turtle.hideturtle()
+        turtle.goto(0, -270)
+        turtle.showturtle()
+        #here to be level
+        car_move += 5
 
-screen.onkey(go_up , "Up")
+
+screen.listen()
+screen.onkey(go_up , "w")
+
 game_on = True
 while game_on:
     for car in cars:
-        car.backward(5)
-    time.sleep(0.3)
+        car.backward(car_move)
+    time.sleep(0.1)
+    screen.update()
+    new_car()
+
+    for car in cars:
+        if car.distance(turtle) < 20:
+            game_on = False
+            turtle.penup()
+            turtle.goto(-10,0)
+            turtle.write("Game Over", align="left", font=("Arial", 20, "normal"))
+
+
+
 
 
 
