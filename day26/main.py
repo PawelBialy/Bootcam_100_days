@@ -34,11 +34,52 @@
 #numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 #result = [num for num in numbers if num % 2 == 0 ]
 # ### ALL DONE IN PYTHON CONSOLE
-with open("file1.txt") as file1 :
-    data_1_file = file1.readlines()
+# with open("file1.txt") as file1 :
+#     data_1_file = file1.readlines()
+#
+# with open("file2.txt") as file2:
+#     data_2_file = file2.readlines()
+#
+# result = [ int(num) for num in data_1_file if num in data_2_file]
+# print(result)
+#
+# ### Dict comprehentions
+# names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor","Freddie"]
+# import random
+# students_score = {student:random.randindt(0,100) for student in names}
 
-with open("file2.txt") as file2:
-    data_2_file = file2.readlines()
 
-result = [ int(num) for num in data_1_file if num in data_2_file]
-print(result)
+# import random
+# students_scores = {student:random.randint(0,100) for student in names}
+# passed_students = {student:score for (student,score) in students_scores.items() if score >= 50 }
+
+
+# weather_c = {
+#     "Monday": 12,
+#     "Tuesday": 14,
+#     "Wednesday": 15,
+#     "Thursday": 14,
+#     "Friday": 21,
+#     "Saturday": 22,
+#     "Sunday": 24,
+# }
+#
+# weather_f = {day:(temp * 9/5 ) + 32 for (day,temp) in weather_c.items()}
+
+
+### LOOPING THROUGH DICTIONARIES:
+student_dict ={
+    "student":["Angela", "Paul", "James"],
+    "score":[62,29,88]
+}
+# for (key, value) in student_dict.items():
+#     print(value)
+
+import pandas
+student_data_frame = pandas.DataFrame(student_dict)
+print(student_data_frame)
+###Loop through rows of a data frame :
+
+for (intex, row) in student_data_frame.iterrows():
+    if row.student == "Angela":
+        print(row.score)
