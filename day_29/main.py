@@ -10,11 +10,11 @@ PINK = "#e2979c"
 window = Tk()
 window.title("Password Manager")
 # window.minsize(width=300,height=200)
-window.config(padx=40,pady=40, )
+window.config(padx=50,pady=50, )
 
 canvas = Canvas(width=200, height=200,highlightthickness=0, )
 padlock_img = PhotoImage(file="logo.png")
-canvas.create_image(85,100, image=padlock_img)
+canvas.create_image(100,100, image=padlock_img)
 canvas.grid(column=1, row=0)
 
 webside_text = Label(text="Webside:",)
