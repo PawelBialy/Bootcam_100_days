@@ -1,3 +1,8 @@
 Amazon | adres_email@gmail.com | password
 youtube | adres_email@gmail.com | 12345
 ebay | adres_email@gmail.com | 789456
+
+
+
+amaziooon | adres_email@gmail.com | amaziooon
+
