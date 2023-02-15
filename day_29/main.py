@@ -40,17 +40,23 @@ def save():
     if len(website) ==0 or len(password) ==0:
         messagebox.showinfo(title="Hey!", message="Text field can't be empty.")
     else:
-        with open("save_data.json", "r") as data_file:
-            # Reading old data
-            data= json.load(data_file)
+        try:
+            with open("data.json", "r") as data_file:
+                # Reading old data
+                data= json.load(data_file)
+        except FileNotFoundError:
+            with open ("data.json","w") as data_file:
+                json.dump(new_dictionary, data_file, indent=4)
+        else:
             #Updating old data with new data
             data.update(new_dictionary)
-        with open("save_data.json","w") as data_file:
-            #saving updated data
-            json.dump(data, data_file, indent=4)
 
-            webside_entry.delete(0, END)
-            password_entry.delete(0, END)
+            with open("data.json","w") as data_file:
+                #saving updated data
+                json.dump(data, data_file, indent=4)
+        finally:
+                webside_entry.delete(0, END)
+                password_entry.delete(0, END)
 
 
 
