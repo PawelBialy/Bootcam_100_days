@@ -1,27 +1,28 @@
+from tkinter import *
 import requests
 
-response = requests.get(url="http://api.open-notify.org/iss-now.json") # wywołujemy metode get z pakietu requests aby
-# zdobyc dane które potrzebujemy z endpointu - endopoint to ten argument  nawiasie, wypisujemy go przy uzyciu url=" "
+def get_quote():
+    response = requests.get(url="https://api.kanye.rest")
+    response.raise_for_status()
+    data = response.json()
+    text = data["quote"]
+    canvas.itemconfig(quote_text, text= text)
 
-response.raise_for_status()
+# Ready for challenge
+window = Tk()
+window.title("Kanye Says...")
+window.config(padx=50, pady=50)
 
-data = response.json()
+canvas = Canvas(width=300, height=414)
+background_img = PhotoImage(file="background.png")
+canvas.create_image(150, 207, image=background_img)
+quote_text = canvas.create_text(150, 207, text="Kanye Quote Goes HERE", width=250, font=("Arial", 30, "bold"), fill="white")
+canvas.grid(row=0, column=0)
+
+kanye_img = PhotoImage(file="kanye.png")
+kanye_button = Button(image=kanye_img, highlightthickness=0, command=get_quote)
+kanye_button.grid(row=1, column=0)
 
 
-longitude = data["iss_position"]["longitude"] # wchodzimy głębiej w dane i wypisujemy sobie dokładnie to co potrzebujemy
-# tak jak w dict za pomocą keyworda
-latitude = data["iss_position"]["latitude"]
 
-iss_position = (longitude, latitude)
-print(iss_position)
-
-
-#  errors :
-# 1XX - hold on, to nie koniec
-# 2XX -  Here you Go , kod zakonczony sukcesem
-# 3XX - go away - brak dostępu
-# 4XX  - you screwed up - cos schrzaniłeś
-# 5XX - i screwed up - serwer cos schrzanił
-
-# request modul
-
+window.mainloop()
