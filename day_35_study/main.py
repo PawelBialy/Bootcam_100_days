@@ -2,9 +2,12 @@
 
 #API KEY
 import requests
+from twilio.rest import Client
+import smtplib
 OCW_endpoint = "https://api.openweathermap.org/data/2.5/onecall"
-api_key = "364b6f69594600d1b195126dc0cac7be"
-
+api_key = "364b6f69594600d1b195126dc0ca****"
+account_sid = "Ab873783094d84930293ms39222"
+auth_token = "0ak39A937402ns820492ks810sk1"
 
 
 
@@ -28,4 +31,11 @@ for hour_data in weather_slice:
     if int(condition_code) < 700 :
         will_rain = True
 if will_rain:
-    print("Bring un umbrella")
+    client = Client(account_sid, auth_token)
+    message = client.messages \
+        .create(
+        body=" Take umbrella with you.",
+        from_ = "+789456123",
+        to= "Your number"
+    )
+print(message.status)
