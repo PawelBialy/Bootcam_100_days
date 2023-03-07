@@ -8,10 +8,10 @@ HEIGHT = 190
 AGE = 27
 
 excercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
-sheety_endpoint = "https://api.sheety.co/7031520c67436ee53c3ac2e96e4c3a72/myWorkouts/workouts"
+sheety_endpoint = "https://api.sheety.co/cd4cdf720a554ac4e1919d9c8297a553/myWorkouts/workouts"
 
 
-excercise_text = input("Tell me which excercice you did: ")
+exercise_text = input("Tell me which excercice you did: ")
 
 headers = {
 "x-app-id" : APP_ID,
@@ -19,8 +19,8 @@ headers = {
 }
 
 
-excercise_params = {
-    "query" : excercise_text,
+exercise_params = {
+    "query" : exercise_text,
     "gender": GENDER,
     "weight_kg": WEIGHT,
     "height_cm": HEIGHT ,
@@ -30,7 +30,7 @@ excercise_params = {
 
 
 
-response = requests.post(excercise_endpoint, json= excercise_params , headers=headers)
+response = requests.post(excercise_endpoint, json= exercise_params , headers=headers)
 result = response.json()
 # print(result)
 
@@ -42,12 +42,27 @@ for exercise in result["exercises"]:
         "workout": {
             "date": today,
             "time": time,
-            "exercise": exercise['name'].title(),
+            "exercise": exercise['user_input'].title(),
             "duration" : exercise['duration_min'],
             "calories" : exercise['nf_calories'],
         }
     }
 
-    sheet_response = requests.post(sheety_endpoint, json=sheet_inputs)
+    # sheet_response = requests.post(url=sheety_endpoint, json=sheet_inputs, )
+    # print(sheet_inputs)
+    #     print(sheet_response.text)
 
+    #Basic auth
+    # user = "pawelski"
+    # password = "uczsieciulu"
+    #
+    # sheet_response = requests.post(url=sheety_endpoint, json=sheet_inputs, auth=(user, password))
+    # print(sheet_response.text)
+
+    #Token auth
+    bearer_headers = {
+        "Authorization": "Bearer cGF3ZWxza2k6dWN6c2llY2l1bHU",
+    }
+
+    sheet_response = requests.post(url=sheety_endpoint, json=sheet_inputs, headers=bearer_headers)
     print(sheet_response.text)
