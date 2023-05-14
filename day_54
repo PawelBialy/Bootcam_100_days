@@ -1,16 +1,25 @@
-# from flask import Flask
+from flask import Flask
+
+app = Flask(__name__)
+
+print(__name__)
+
+@app.route('/')
+def hello_wordl():
+    return '<h1 style="text-align: center">Hello World!</h1>' \
+           '<p>That is paragraph! </p>' \
+           '<img src="https://media3.giphy.com/media/cW8QD83geUYpDg16Yz/giphy.webp?cid=ecf05e47uhv02o6vta7nwalp6v4e37dj7sabkofb5k41bzbs&ep=v1_gifs_search&rid=giphy.webp&ct=g "width=300 height=500>'
+
+@app.route('/bye')
+def bye():
+    return "bye"
+@app.route('/username/<name>/<int:number>')
+def greet(name, number):
+    return (f"Hello there {name}, your are {number} years old ")
+
+if __name__ == "__main__":
+    app.run(debug=True)
 #
-# app = Flask(__name__)
-#
-# print(__name__)
-#
-# @app.route('/')
-# def hello_wordl():
-#     return "Hello World!"
-#
-#
-# if __name__ == "__main__":
-#     app.run()
 #
 # def add ( n1, n2):
 #     return n1+n2
