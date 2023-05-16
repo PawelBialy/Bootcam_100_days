@@ -4,28 +4,38 @@ import random
 random_number = random.randint(0,9)
 print(random_number)
 
-app = Flask (__name__)
+app = Flask(__name__)
+
+
 
 @app.route('/')
 def home():
-    return "<h1>Guess a number between 0 and 9. </h1> " \
-            "<img src= 'https://media0.giphy.com/media/QvBoMEcQ7DQXK/giphy.webp?cid=ecf05e47m7f0wxg8kcioicdhdv3ip363wpo7eq9wahl90j3x&ep=v1_gifs_search&rid=giphy.webp&ct=g' />"
+    return "<h1 style= 'text-align:center; color:red'> Guess a number between 0 - 20! </h1>" \
+           "<div style='display: flex; justify-content: center;'>" \
+           "<img src='https://media0.giphy.com/media/QvBoMEcQ7DQXK/giphy.webp?cid=ecf05e47m7f0wxg8kcioicdhdv3ip363wpo7eq9wahl90j3x&ep=v1_gifs_search&rid=giphy.webp&ct=g'/>"
 
 
-@app.route("/<int:guess>")
+@app.route('/<int:guess>')
 def guess_number(guess):
     if guess > random_number:
-        return "<h1 style=color:red> Too high. Try again. </h1>" \
+        return "<h1 style= 'text-align:center; color:purple'>To high! Try again! </h1> " \
+               "<div style='display: flex; justify-content: center;'>" \
                "<img src='https://media2.giphy.com/media/y8dg5xfB3IWQB3QtH1/giphy.gif?cid=ecf05e47dt4q2btl7sa1f5uotp1i4njx4ckg1ygwz4asoqef&ep=v1_gifs_search&rid=giphy.gif&ct=g' />"
-
     elif guess < random_number:
-        return "<h1 style='color: green'> Too low, try again!</h1>" \
+        return "<h1 style= 'text-align:center; color:blue'> Toooooo low ! </h1> " \
+               "<div style='display: flex; justify-content: center;'>" \
                "<img src='https://media2.giphy.com/media/UTSinKEh31bRQDKbBq/200w.webp?cid=ecf05e47427ygbvyoyagigq1965az4sy1k5e9exlk39r1w52&ep=v1_gifs_search&rid=200w.webp&ct=g'/>"
-
     else:
-        return "<h1 style='color: blue'>Good try!!!</h1>" \
+        return  "<h1 style= 'text-align:center; color:green'> You got it! </h1> " \
+                "<div style='display: flex; justify-content: center;'>" \
                 "<img src='https://media2.giphy.com/media/YRuFixSNWFVcXaxpmX/giphy.webp?cid=ecf05e47d1c95qmskru0lvlaotuvubf4iu2nkzmihxkpjmb5&ep=v1_gifs_search&rid=giphy.webp&ct=g'/> "
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+
 
